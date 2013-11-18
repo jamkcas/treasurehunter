@@ -65,13 +65,13 @@ TreasureHunter::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-  address:              'smtp.gmail.com',
+  address:              'smtp.sendgrid.net',
   port:                  587,
-  domain:               'gmail.com',
-  user_name:             ENV['TREASUREHUNTER_EMAIL'],
-  password:              ENV['TREASUREHUNTER_PASSWORD'],
+  domain:               'heroku.com',
+  user_name:             ENV['SENDGRID_USERNAME'],
+  password:              ENV['SENDGRID_PASSWORD'],
   authentication:       'plain',
   enable_starttls_auto: true }
 end
