@@ -77,7 +77,8 @@ success = (pos) ->
   console.log status
   myDate = new Date()
   finish = formatDate("#{huntInfo.end}")
-  if myDate > finish
+
+  if myDate < finish
     clearInterval checkLocation
     body = "Sorry! Game time has expired and no one won. Thanks for playing!"
     _.each huntInfo.name, (d) ->
@@ -97,7 +98,7 @@ success = (pos) ->
       }
     })
   else
-    if dist < 1 # 0.059144 # 100000
+    if dist <  1 # 100000
 
       if status == false
         form = JST['templates/answer_form']({})
@@ -173,7 +174,8 @@ $ ->
       $.get("/hunts/#{hunt_id}").done (data) ->
         myDate = new Date()
         huntDate = formatDate("#{data.date}")
-
+        console.log "current" + myDate
+        console.log "finish" + huntDate
         currentNumber = data.current.phone
         prog = parseInt(data.current.progress)
         huntInfo = data
